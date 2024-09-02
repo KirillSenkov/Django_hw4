@@ -13,6 +13,31 @@ Content-Type: application/json
 
 ###
 
+# создание набора продуктов
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{"title": "список товаров",
+ "products": [
+    {
+      "title": "Помидор Черри",
+      "description": "Нет! Это лучшие помидоры на рынке!"
+    },
+    {
+      "title": "Огурец",
+      "description": "Это единственные не помидоры на рынке!"
+    }
+  ]
+}
+
+###
+
+# удаление всех продуктов
+DELETE {{baseUrl}}/products/
+Content-Type: application/json
+
+###
+
 # получение продуктов
 GET {{baseUrl}}/products/
 Content-Type: application/json
@@ -36,7 +61,7 @@ Content-Type: application/json
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+GET {{baseUrl}}/products/?search=помидоры
 Content-Type: application/json
 
 ###
@@ -63,8 +88,14 @@ Content-Type: application/json
 
 ###
 
+# удаление всех складов
+DELETE {{baseUrl}}/stocks/
+Content-Type: application/json
+
+###
+
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+PATCH {{baseUrl}}/stocks/1/
 Content-Type: application/json
 
 {
