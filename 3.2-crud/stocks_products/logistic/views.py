@@ -55,21 +55,11 @@ class ProductModelViewSet(ModelViewSet):
                         status=status.HTTP_204_NO_CONTENT)
 
 
-class StockViewSet(ModelViewSet):
+class StockModelViewSet(ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
     filterset_class = StockFilter
     filterset_fields = ['products']
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors,
-                        status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
